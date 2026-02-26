@@ -452,7 +452,53 @@ footer {
   font-size: 0.9rem;
 }
 
+/* Sync Indicator */
+.sync-indicator {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  padding: 0.75rem 1.25rem;
+  border-radius: 2rem;
+  border: 1px solid var(--accent-primary);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sync-indicator.hidden {
+  transform: translateY(-20px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sync-indicator span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent-primary);
+}
+
+.sync-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-primary);
+  animation: spin 1.5s linear infinite;
+}
+
 /* Animations */
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

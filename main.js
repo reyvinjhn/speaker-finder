@@ -3380,6 +3380,7 @@ const rolePills = document.querySelectorAll('.filter-pill[data-filter]');
 const topicPills = document.querySelectorAll('.filter-pill[data-topic]');
 const statusPills = document.querySelectorAll('.filter-pill[data-status]');
 const resultsCount = document.getElementById('resultsCount');
+const syncIndicator = document.getElementById('syncIndicator');
 
 // Initialize data with default outreach status if not present
 speakers.forEach(speaker => {
@@ -3390,6 +3391,7 @@ speakers.forEach(speaker => {
 async function init() {
   resultsCount.textContent = 'Loading statuses from Google Sheets...';
   speakerGrid.innerHTML = '';
+  syncIndicator.classList.remove('hidden');
 
   try {
     const response = await fetch(SCRIPT_URL);
@@ -3403,6 +3405,8 @@ async function init() {
     });
   } catch (error) {
     console.error("Failed to fetch statuses from Google Sheets:", error);
+  } finally {
+    syncIndicator.classList.add('hidden');
   }
 
   renderSpeakers(speakers);
@@ -3494,6 +3498,7 @@ function renderSpeakers(speakersToRender) {
       selectEl.setAttribute("data-value", newStatus);
 
       // Save to Google Sheets
+      syncIndicator.classList.remove('hidden');
       try {
         await fetch(SCRIPT_URL, {
           method: 'POST',
@@ -3502,6 +3507,8 @@ function renderSpeakers(speakersToRender) {
         });
       } catch (error) {
         console.error("Failed to update status in Google Sheets:", error);
+      } finally {
+        syncIndicator.classList.add('hidden');
       }
     });
 
