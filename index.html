@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMA Speaker Finder</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="app-container">
+
+
+    <main>
+      <div class="search-filter-section">
+        <div class="search-box">
+          <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search by name, topic, or role..." autocomplete="off" />
+        </div>
+
+        <div class="filters-container">
+          <div class="filter-group">
+            <span class="filter-label">Role:</span>
+            <button class="filter-pill active" data-filter="all">All</button>
+            <button class="filter-pill" data-filter="Author">Authors</button>
+            <button class="filter-pill" data-filter="Founder">Founders</button>
+            <button class="filter-pill" data-filter="Expert">Experts</button>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Topics:</span>
+            <button class="filter-pill" data-topic="Web3">Web3</button>
+            <button class="filter-pill" data-topic="Marketing">Marketing</button>
+            <button class="filter-pill" data-topic="Tech">Tech</button>
+            <button class="filter-pill" data-topic="Leadership">Leadership</button>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Outreach:</span>
+            <button class="filter-pill active" data-status="all">All</button>
+            <button class="filter-pill" data-status="Not Contacted">Uncontacted</button>
+            <button class="filter-pill" data-status="In Contact">In Progress</button>
+            <button class="filter-pill" data-status="Successful">Success</button>
+            <button class="filter-pill" data-status="Unsuccessful">Failed</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="results-section">
+        <div class="results-header">
+          <h2 id="resultsCount">Loading speakers...</h2>
+        </div>
+        <div class="speaker-grid" id="speakerGrid">
+          <!-- Speaker Cards will be injected here by JS -->
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 AMA Speaker Finder. Designed for community builders.</p>
+    </footer>
+  </div>
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
